@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
-export default function useFetch(url, query) {
+export default function useFetch(url, query = "") {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,10 +15,10 @@ export default function useFetch(url, query) {
         const { data } = await axios.get(`${url}?${query}`, { signal });
         setData(data);
       } catch (err) {
-        if (!axios.isCancel()) {
-          setData([]);
-          toast.error(err?.response?.data?.error);
-        }
+        // if (!axios.isCancel()) {
+        setData([]);
+        toast.error(err?.message);
+        // }
       } finally {
         setIsLoading(false);
       }
@@ -26,9 +26,9 @@ export default function useFetch(url, query) {
 
     fetchData();
 
-    return () => {
-      controller.abort();
-    };
+    // return () => {
+    //   controller.abort();
+    // };
   }, [query, url]);
 
   return { isLoading, data };

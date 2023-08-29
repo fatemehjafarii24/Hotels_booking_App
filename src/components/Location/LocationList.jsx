@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
-import Loader from "../Loader/Loader";
-function LocationList() {
-  const { data, isLoading } = useFetch("http://localhost:5000/hotels");
-  console.log(data);
-  if (isLoading) return <Loader />;
+
+function LocationList({ locations }) {
   return (
     <div className="locationList">
-      {data.map((item) => {
+      {locations.map((item) => {
         return (
           <Link to={`/rooms/${item.id}`} key={item.id}>
             <div className="locationItem">

@@ -205,3 +205,8 @@
 .map {
   height: 100%;
 }
+
+.searchList {
+  margin: 1rem auto;
+  max-width: 1280px;
+}
