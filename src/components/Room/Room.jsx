@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Loader from "../Loader/Loader";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { useEffect, useState } from "react";
+import useGeolocation from "../../hooks/useGeoLocation";
 
 function Room() {
   const { id } = useParams();
@@ -10,10 +11,20 @@ function Room() {
   const { longitude, latitude } = data || {};
   const [mapPosition, setMapPosition] = useState([35, 0]);
 
+  const {
+    isLoading: iLoadingPosition,
+    position: geoLocationPosition,
+    getPosition,
+  } = useGeolocation();
+
   useEffect(() => {
     if (longitude || latitude) setMapPosition([latitude, longitude]);
   }, [longitude, latitude]);
-  console.log(mapPosition);
+
+  useEffect(() => {
+    if (geoLocationPosition?.lat)
+      setMapPosition([geoLocationPosition.lat, geoLocationPosition.lng]);
+  }, [geoLocationPosition]);
 
   if (isLoading) return <Loader />;
 
@@ -27,6 +38,9 @@ function Room() {
         <img src={data.xl_picture_url} alt={data.name} />
       </div>
       <div className="mapContainer">
+        <button className="getLocation" onClick={getPosition}>
+          {iLoadingPosition ? "Loading..." : "Use Your Location"}
+        </button>
         <MapContainer
           zoom={6}
           scrollWheelZoom={true}
@@ -38,9 +52,7 @@ function Room() {
             url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
           />
           <Marker position={mapPosition}>
-            <Popup>
-            {data.host_location}
-            </Popup>
+            <Popup>{data.host_location}</Popup>
           </Marker>
           <ChangeCenter position={mapPosition} />
         </MapContainer>
