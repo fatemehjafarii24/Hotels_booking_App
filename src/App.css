@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
 .header {
   display: flex;
   justify-content: center;
@@ -148,7 +150,46 @@
   align-items: center;
 }
 
-.locationItem .locationItemDesc .price span{
+.locationItem .locationItemDesc .price span {
   color: var(--text-400);
   font-weight: 400;
+}
+
+/* room detail */
+.room {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1280px;
+  margin: 2rem auto;
+}
+.roomDetail {
+}
+
+.roomDetail h2 {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+.roomDetail > div {
+  margin-bottom: 1rem;
+}
+.roomDetail img {
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+/* map */
+
+.mapContainer {
+  flex: 1;
+  background-color: var(--text-100);
+  position: relative;
+}
+
+.map {
+  height: 100%;
 }
