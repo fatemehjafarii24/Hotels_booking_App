@@ -5,7 +5,7 @@ function LocationList({ locations }) {
     <div className="locationList">
       {locations.map((item) => {
         return (
-          <Link to={`/rooms/${item.id}`} key={item.id}>
+          <Link to={`/hotels/${item.id}`} key={item.id}>
             <div className="locationItem">
               <img src={item.picture_url.url} alt={item.name} />
               <div className="locationItemDesc">
@@ -25,3 +25,5 @@ function LocationList({ locations }) {
 }
 
 export default LocationList;
+
+

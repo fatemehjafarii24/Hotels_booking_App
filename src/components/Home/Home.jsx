@@ -6,7 +6,7 @@ function Home() {
   const { data, isLoading } = useFetch("http://localhost:5000/hotels", "");
   if (isLoading) return <Loader />;
   return (
-    <div className="searchList">
+    <div className="nearbyLocation">
       <h2>Neayby Locations</h2>
       <LocationList locations={data} />
     </div>

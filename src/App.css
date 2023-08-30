@@ -3,6 +3,8 @@
 .header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 .headerSearch {
   display: flex;
@@ -56,7 +58,7 @@
   position: absolute;
   top: 2rem;
   width: 220px;
-  z-index: 1;
+  z-index: 1000;
 }
 .guestOptionItem {
   display: flex;
@@ -93,7 +95,7 @@
   position: absolute;
   top: 50px;
   left: -5rem;
-  z-index: 2;
+  z-index: 1002;
 }
 
 .dateIcon {
@@ -116,10 +118,14 @@
 }
 
 /*  location list */
-
-.locationList {
+.nearbyLocation {
   max-width: 1280px;
   margin: 2rem auto;
+}
+.nearbyLocation h2 {
+  margin-bottom: 1rem;
+}
+.locationList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
@@ -164,8 +170,6 @@
   max-width: 1280px;
   margin: 2rem auto;
 }
-.roomDetail {
-}
 
 .roomDetail h2 {
   margin-bottom: 0.3rem;
@@ -176,7 +180,6 @@
 }
 .roomDetail img {
   width: 100%;
-  max-width: 20rem;
   height: auto;
   object-fit: cover;
   border-radius: 0.8rem;
@@ -207,6 +210,59 @@
 }
 
 .searchList {
-  margin: 1rem auto;
-  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.searchList .searchItem {
+  display: flex;
+  gap: 1rem;
+}
+.searchList .searchItem img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.searchItem .searchItemDesc p {
+  margin-bottom: 0.3rem;
+}
+.searchItem .searchItemDesc .name {
+  color: var(--text-400);
+}
+.searchItem .searchItemDesc .location {
+  font-weight: 500;
+}
+.searchItem .searchItemDesc .price {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.searchItem .searchItemDesc .price span {
+  color: var(--text-400);
+  font-weight: 400;
+}
+
+/* app layout */
+.appLayout {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 130px);
+  /* background-color: var(--text-100); */
+  align-items: stretch;
+}
+
+.sidebar {
+  width: 35%;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    width: 50%;
+  }
 }

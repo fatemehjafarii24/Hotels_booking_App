@@ -7,19 +7,28 @@ import Room from "./components/Room/Room";
 import Hotels from "./components/Hotels/Hotels";
 import Home from "./components/Home/Home";
 import { Toaster } from "react-hot-toast";
+import AppLayout from "./components/AppLayout/AppLayout";
+import HotelsProvider from "./context/HotelsProvider";
+import Bookmark from "./components/Bookmark/Bookmark";
 
 function App() {
   return (
-    <div>
+    <HotelsProvider>
       <Toaster />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/rooms/:id" element={<Room />} />
+        <Route path="/hotels" element={<AppLayout />}>
+          <Route index element={<Hotels />} />
+          <Route path=":id" element={<Room />} />
+          <Route path="bookmark" element={<Bookmark />} />
+        </Route>
       </Routes>
-    </div>
+    </HotelsProvider>
   );
 }
 
 export default App;
+
+// hotels
+// hotels/:id
