@@ -12,11 +12,9 @@
   max-width: 900px;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #ccc; */
   gap: 1rem;
   border: 1px solid #ebe9e9;
   border-radius: 1.5rem;
-  /* overflow: hidden; */
   padding: 1rem;
 }
 
@@ -270,4 +268,48 @@
   .sidebar {
     width: 50%;
   }
+}
+
+/* form */
+
+.form .formControl {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.formControl label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.formControl input {
+  border: 1px solid var(--text-400);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+.btn--primary {
+  background-color: var(--primary-600);
+  color: #fff;
+}
+
+.btn--back {
+  border: 1px solid var(--text-400);
+}
+
+.formControl .flag {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
 }
