@@ -33,7 +33,13 @@ function HotelsProvider({ children }) {
 
   return (
     <HotelContext.Provider
-      value={{ isLoading, hotels, currentHotel, getHotel, isLoadingCurrHotel }}
+      value={{
+        isLoading,
+        hotels,
+        currentHotel,
+        getHotel,
+        isLoadingCurrHotel,
+      }}
     >
       {children}
     </HotelContext.Provider>
