@@ -274,7 +274,7 @@
 .bookmarkList {
   margin-top: 1rem;
 }
-.bookmarkList .bookmarkItem {
+.bookmarkItem {
   margin-bottom: 1rem;
   border: 1px solid var(--text-400);
   border-radius: 1rem;
@@ -284,6 +284,10 @@
 .bookmarkList .bookmarkItem.current-bookmark {
   border: 2px solid var(--primary-600);
   background-color: var(--text-100);
+}
+
+.currentBookmark h2 {
+  margin: 1rem 0;
 }
 
 /* form */

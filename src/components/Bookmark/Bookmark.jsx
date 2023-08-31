@@ -1,28 +1,34 @@
 import ReactCountryFlag from "react-country-flag";
 import Loader from "../Loader/Loader";
 import { useBookmark } from "../context/BookmarkListContext";
+import { Link } from "react-router-dom";
 
 function Bookmark() {
-  const { bookmarks, isLoading } = useBookmark();
+  const { isLoading, bookmarks, currentBookmark } = useBookmark();
+
   if (isLoading) return <Loader />;
+
   return (
     <div>
-      <h2>Bookmarklist</h2>
+      <h2>BookmarkList</h2>
+
       <div className="bookmarkList">
         {bookmarks.map((item) => {
           return (
-            <>
-              <div className="current-bookmark bookmarkItem" key={item.id}>
+            <Link
+              key={item.id}
+              to={`${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
+            >
+              <div
+                className={`bookmarkItem ${
+                  item.id === currentBookmark?.id ? "current-bookmark" : ""
+                }`}
+              >
                 <ReactCountryFlag svg countryCode={item.countryCode} />
-                &nbsp; <strong>{item.cityName}</strong> &nbsp;{" "}
+                &nbsp; <strong>{item.cityName}</strong> &nbsp;
                 <span>{item.country}</span>
               </div>
-              <div className="bookmarkItem" key={item.id}>
-                <ReactCountryFlag svg countryCode={item.countryCode} />
-                &nbsp; <strong>{item.cityName}</strong> &nbsp;{" "}
-                <span>{item.country}</span>
-              </div>
-            </>
+            </Link>
           );
         })}
       </div>

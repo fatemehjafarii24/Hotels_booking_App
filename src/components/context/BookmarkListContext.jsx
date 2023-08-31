@@ -7,13 +7,14 @@ const BookmarkContext = createContext();
 const BASE_URL = "http://localhost:5000";
 
 function BookmarkListProvider({ children }) {
-  const [currrentBookmark, setCurrentBookmark] = useState(null);
+  const [currentBookmark, setCurrentBookmark] = useState(null);
   const [isLoadingCurrBookmark, setIsLoadinCurrBookmark] = useState(false);
 
   const { isLoading, data: bookmarks } = useFetch(`${BASE_URL}/bookmarks`);
 
-  async function getBoomark(id) {
+  async function getBookmark(id) {
     setIsLoadinCurrBookmark(true);
+    setCurrentBookmark(null);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
       setCurrentBookmark(data);
@@ -29,8 +30,8 @@ function BookmarkListProvider({ children }) {
       value={{
         isLoading,
         bookmarks,
-        currrentBookmark,
-        getBoomark,
+        currentBookmark,
+        getBookmark,
         isLoadingCurrBookmark,
       }}
     >
