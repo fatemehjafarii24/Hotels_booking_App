@@ -1297,6 +1297,15 @@
       "latitude": "20.5054035483508",
       "longitude": "3.861157573506015",
       "host_location": "iran"
+    },
+    {
+      "id": 2,
+      "cityName": "Sanandaj",
+      "country": "Iran",
+      "countryCode": "IR",
+      "latitude": "20.5054035483508",
+      "longitude": "3.861157573506015",
+      "host_location": "iran"
     }
   ]
 }
