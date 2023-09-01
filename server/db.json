@@ -1334,15 +1334,6 @@
       "id": 1
     },
     {
-      "cityName": "A Dakhla Oasis",
-      "country": "Egypt",
-      "countryCode": "EG",
-      "latitude": "25.497826512321023",
-      "longitude": "28.996572910180568",
-      "host_location": "A Dakhla Oasis Egypt",
-      "id": 3
-    },
-    {
       "cityName": "Mahidasht",
       "country": "Iran (Islamic Republic of)",
       "countryCode": "IR",
@@ -1359,6 +1350,24 @@
       "longitude": "47.03114358752335",
       "host_location": "Sanandaj Iran (Islamic Republic of)",
       "id": 5
+    },
+    {
+      "cityName": "A Dakhla Oasis",
+      "country": "Egypt",
+      "countryCode": "EG",
+      "latitude": "25.02090651422749",
+      "longitude": "29.09059588509316",
+      "host_location": "A Dakhla Oasis Egypt",
+      "id": 7
+    },
+    {
+      "cityName": "Baba Kot",
+      "country": "Pakistan",
+      "countryCode": "PK",
+      "latitude": "28.43528783183169",
+      "longitude": "67.78003711374224",
+      "host_location": "Baba Kot Pakistan",
+      "id": 8
     }
   ]
 }

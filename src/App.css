@@ -342,3 +342,24 @@
   right: 1rem;
   top: 50%;
 }
+
+a.active {
+  color: var(--primary-600);
+  font-weight: 700;
+}
+
+.loginContainer {
+  margin: 2rem auto;
+  max-width: 25rem;
+  border: 1px solid var(--text-300);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.loginContainer button {
+  width: 100%;
+}
+
+.loginContainer h2 {
+  margin-bottom: 1rem;
+}
