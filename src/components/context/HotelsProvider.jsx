@@ -1,18 +1,23 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const HotelContext = createContext();
 const BASE_URL = "http://localhost:5000/hotels";
 
 function HotelsProvider({ children }) {
+  // current hotel
   const [currentHotel, setCurrentHotel] = useState(null);
-  const [isLoadingCurrHotel, setIsLoadinCurrHotel] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const destination = searchParams.get("destination");
-  const room = JSON.parse(searchParams.get("options"))?.room;
+  // loading
+  const [isLoadingCurrentHotel, setIsLoadingCurrentHotel] = useState(false);
+
+
+  const [SearchParams, SetSearchParams] = useSearchParams();
+  const destination = SearchParams.get("destination");
+  const room = JSON.parse(SearchParams.get("options"))?.room; //data of room
 
   const { isLoading, data: hotels } = useFetch(
     BASE_URL,
@@ -20,14 +25,15 @@ function HotelsProvider({ children }) {
   );
 
   async function getHotel(id) {
-    setIsLoadinCurrHotel(true);
+    setIsLoadingCurrentHotel(true);
     try {
       const { data } = await axios.get(`${BASE_URL}/${id}`);
       setCurrentHotel(data);
-      setIsLoadinCurrHotel(false);
+      setIsLoadingCurrentHotel(false);
+
     } catch (error) {
       toast.error(error.message);
-      setIsLoadinCurrHotel(false);
+      setIsLoadingCurrentHotel(false);
     }
   }
 
@@ -38,10 +44,10 @@ function HotelsProvider({ children }) {
         hotels,
         currentHotel,
         getHotel,
-        isLoadingCurrHotel,
+        isLoadingCurrentHotel,
       }}
     >
-      {children}
+      {children}{" "}
     </HotelContext.Provider>
   );
 }
@@ -50,3 +56,4 @@ export default HotelsProvider;
 export function useHotels() {
   return useContext(HotelContext);
 }
+

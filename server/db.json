@@ -1325,49 +1325,31 @@
   ],
   "bookmarks": [
     {
-      "cityName": "Abalessa",
-      "country": "Algeria",
-      "countryCode": "DZ",
-      "latitude": "23.18455079512732",
-      "longitude": "3.795523257510883",
-      "host_location": "Abalessa Algeria",
-      "id": 1
+      "cityName": "Abu Dhabi",
+      "country": "United Arab Emirates (the)",
+      "countryCode": "AE",
+      "latitude": "24.100450177126323",
+      "longitude": "54.60176899907942",
+      "host_location": "Abu Dhabi United Arab Emirates (the)",
+      "id": 16
     },
     {
-      "cityName": "Mahidasht",
+      "cityName": "Al Dhafra",
+      "country": "United Arab Emirates (the)",
+      "countryCode": "AE",
+      "latitude": "23.784160500538885",
+      "longitude": "54.17347042819582",
+      "host_location": "Al Dhafra United Arab Emirates (the)",
+      "id": 17
+    },
+    {
+      "cityName": "Tehran",
       "country": "Iran (Islamic Republic of)",
       "countryCode": "IR",
-      "latitude": "34.32869425037187",
-      "longitude": "46.724183117022086",
-      "host_location": "Mahidasht Iran (Islamic Republic of)",
-      "id": 4
-    },
-    {
-      "cityName": "Sanandaj",
-      "country": "Iran (Islamic Republic of)",
-      "countryCode": "IR",
-      "latitude": "35.31372444726279",
-      "longitude": "47.03114358752335",
-      "host_location": "Sanandaj Iran (Islamic Republic of)",
-      "id": 5
-    },
-    {
-      "cityName": "A Dakhla Oasis",
-      "country": "Egypt",
-      "countryCode": "EG",
-      "latitude": "25.02090651422749",
-      "longitude": "29.09059588509316",
-      "host_location": "A Dakhla Oasis Egypt",
-      "id": 7
-    },
-    {
-      "cityName": "Baba Kot",
-      "country": "Pakistan",
-      "countryCode": "PK",
-      "latitude": "28.43528783183169",
-      "longitude": "67.78003711374224",
-      "host_location": "Baba Kot Pakistan",
-      "id": 8
+      "latitude": "35.673494108220325",
+      "longitude": "51.63573520837505",
+      "host_location": "Tehran Iran (Islamic Republic of)",
+      "id": 18
     }
   ]
 }

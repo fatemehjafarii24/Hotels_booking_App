@@ -1,12 +1,9 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useReducer } from "react";
+import useFetch from "../../hooks/useFetch";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const BookmarkContext = createContext();
 const BASE_URL = "http://localhost:5000";
@@ -19,6 +16,7 @@ const initialState = {
 };
 
 function bookmarkReducer(state, action) {
+  // 1. pending, 2. success ,3. rejected
   switch (action.type) {
     case "loading":
       return {
@@ -62,9 +60,12 @@ function bookmarkReducer(state, action) {
   }
 }
 
-// 1. pending, 2. success ,3. rejected
-
 function BookmarkListProvider({ children }) {
+  // current hotel
+  // const [currentBookmark, setCurrentBookmark] = useState(null);
+  // const [bookmarks, setBookmarks] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+
   const [{ bookmarks, isLoading, currentBookmark }, dispatch] = useReducer(
     bookmarkReducer,
     initialState
@@ -80,12 +81,14 @@ function BookmarkListProvider({ children }) {
         toast.error(error.message);
         dispatch({
           type: "rejected",
-          payload: "an Errror occurred in loading bookmarks",
+          payload: "an Error occurred in loading bookmarks",
         });
       }
     }
     fetchBookmarkList();
   }, []);
+
+
 
   async function getBookmark(id) {
     if (Number(id) === currentBookmark?.id) return;
@@ -103,6 +106,7 @@ function BookmarkListProvider({ children }) {
     }
   }
 
+  //  function for => createBookmark
   async function createBookmark(newBookmark) {
     dispatch({ type: "loading" });
     try {
@@ -125,12 +129,15 @@ function BookmarkListProvider({ children }) {
     }
   }
 
+
+
   return (
     <BookmarkContext.Provider
       value={{
         isLoading,
         bookmarks,
         currentBookmark,
+        dispatch,
         getBookmark,
         createBookmark,
         deleteBookmark,
@@ -146,6 +153,8 @@ export function useBookmark() {
   return useContext(BookmarkContext);
 }
 
+
+
 //  context  + reducer => value={{state, dispatch}} => SYNC ACTION => (no side effect !!)
 
 // ASYNC ACTION => reducer function is a PURE fucntion !!
@@ -153,3 +162,4 @@ export function useBookmark() {
 // 1. pass dispatch
 
 // 2. pass actoins => OK
+

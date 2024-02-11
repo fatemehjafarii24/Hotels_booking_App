@@ -2,15 +2,22 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
+
+
 function Login() {
   const [email, setEmail] = useState("user@gmail.com");
   const [password, setPassword] = useState("1234");
-  const { login, isAuthenticated } = useAuth();
+
+  const {Login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email && password) login(email, password);
+    if (email && password) Login(email, password);
   };
+
+
 
   useEffect(() => {
     if (isAuthenticated) navigate("/", { replace: true });

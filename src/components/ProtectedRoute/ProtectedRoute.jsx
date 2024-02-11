@@ -4,11 +4,11 @@ import { useEffect } from "react";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) naviagate("/login"); //AUTHENTICATON
-  }, [isAuthenticated, naviagate]);
+    if (!isAuthenticated) navigate("/login"); //AUTHENTICATON
+  }, [isAuthenticated, navigate]);
 
   return isAuthenticated ? children : null;
 }

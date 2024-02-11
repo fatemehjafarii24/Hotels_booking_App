@@ -4,11 +4,12 @@ import { useHotels } from "../context/HotelsProvider";
 
 function Hotels() {
   const { isLoading, hotels, currentHotel } = useHotels();
-  if (isLoading) return <Loader />;
+  // name_like, host_location => _like
+  if (isLoading) <Loader />;
 
   return (
     <div className="searchList">
-      <h2>Search Results ({hotels.length})</h2>
+      <h2>Search Results({hotels.length})</h2>
       {hotels.map((item) => {
         return (
           <Link
@@ -24,8 +25,10 @@ function Hotels() {
               <div className="searchItemDesc">
                 <p className="location">{item.smart_location}</p>
                 <p className="name">{item.name}</p>
-                €&nbsp;{item.price}&nbsp;
-                <span>night</span>
+                <p className="price">
+                  €&nbsp;{item.price}&nbsp;
+                  <span>night</span>
+                </p>
               </div>
             </div>
           </Link>
@@ -34,4 +37,5 @@ function Hotels() {
     </div>
   );
 }
+
 export default Hotels;

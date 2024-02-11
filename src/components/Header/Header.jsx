@@ -1,7 +1,14 @@
-import { MdLocationOn, MdLogout } from "react-icons/md";
-import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
+import { MdLocationOn } from "react-icons/md";
+import {
+  HiCalendar,
+  HiLogout,
+  HiMinus,
+  HiPlus,
+  HiSearch,
+} from "react-icons/hi";
 import { useRef, useState } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
+
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
@@ -16,15 +23,22 @@ import { useAuth } from "../context/AuthProvider";
 
 function Header() {
   const [searchParams, setSearchParams] = useSearchParams();
+  // destination
   const [destination, setDestination] = useState(
     searchParams.get("destination") || ""
   );
+
+  // state => true or false
   const [openOptions, setOpenOptions] = useState(false);
+
+  // adult ? children ? room ?
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
   });
+
+  // choose date
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -35,24 +49,30 @@ function Header() {
   const [openDate, setOpenDate] = useState(false);
   const navigate = useNavigate();
 
+  // handleOptions => reserve of options
   const handleOptions = (name, operation) => {
     setOptions((prev) => {
       return {
         ...prev,
+        // Change the one that needs to be changed
         [name]: operation === "inc" ? options[name] + 1 : options[name] - 1,
       };
     });
   };
+
   const handleSearch = () => {
+    // date{}
+    // setSearchParams({date, options, destination})
     const encodedParams = createSearchParams({
       date: JSON.stringify(date),
       destination,
       options: JSON.stringify(options),
     });
-    //note : =>  setSearchParams(encodedParams);
+    // *setSearchParams
+    // note : => setSearchParams(encodedParams);
     navigate({
       pathname: "/hotels",
-      search: encodedParams.toString(),
+      search: encodedParams.toString(), //update
     });
   };
 
@@ -67,7 +87,7 @@ function Header() {
             onChange={(e) => setDestination(e.target.value)}
             type="text"
             placeholder="where to go?"
-            className="headerSearchInput"
+            className="headerSearchInput "
             name="destination"
             id="destination"
           />
@@ -76,11 +96,11 @@ function Header() {
         <div className="headerSearchItem">
           <HiCalendar className="headerIcon dateIcon" />
           <div onClick={() => setOpenDate(!openDate)} className="dateDropDown">
-            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-              date[0].endDate,
-              "MM/dd/yyyy"
-            )}`}
+            {`${format(date[0].startDate, "MM/dd/yyyy")} to
+            ${format(date[0].endDate, "MM/dd/yyyy")}
+            `}
           </div>
+
           {openDate && (
             <DateRange
               onChange={(item) => setDate([item.selection])}
@@ -90,12 +110,12 @@ function Header() {
               moveRangeOnFirstSelection={true}
             />
           )}
+
           <span className="seperator"></span>
         </div>
         <div className="headerSearchItem">
           <div id="optionDropDown" onClick={() => setOpenOptions(!openOptions)}>
-            {options.adult} adult &nbsp;&bull;&nbsp; {options.children} children
-            &nbsp;&bull;&nbsp;
+            {options.adult} adult &bull; {options.children} children &bull;{" "}
             {options.room} room
           </div>
           {openOptions && (
@@ -117,11 +137,14 @@ function Header() {
     </div>
   );
 }
+
 export default Header;
 
 function GuestOptionList({ options, handleOptions, setOpenOptions }) {
+  // Logic to click out of bounds (hook)
   const optionsRef = useRef();
   useOutsideClick(optionsRef, "optionDropDown", () => setOpenOptions(false));
+
   return (
     <div className="guestOptions" ref={optionsRef}>
       <OptionItem
@@ -184,7 +207,7 @@ function User() {
         <div>
           <strong>{user.name}</strong>
           <button>
-            &nbsp; <MdLogout onClick={handleLogout} className="logout icon" />
+            &nbsp; <HiLogout onClick={handleLogout} className="logout icon" />
           </button>
         </div>
       ) : (

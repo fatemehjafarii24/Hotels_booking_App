@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+// Logic to click out of bounds
+// custom hook
 export default function useOutsideClick(ref, exceptionId, cb) {
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -7,7 +9,7 @@ export default function useOutsideClick(ref, exceptionId, cb) {
         ref.current &&
         !ref.current.contains(event.target) &&
         event.target.id !== exceptionId
-      ) {
+      ){
         cb();
       }
     }
@@ -18,3 +20,4 @@ export default function useOutsideClick(ref, exceptionId, cb) {
     };
   }, [ref, cb, exceptionId]);
 }
+

@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+//  custom hook  
+// location user
 export default function useGeoLocation() {
+  // state
   const [isLoading, setIsLoading] = useState(false);
   const [position, setPosition] = useState({});
   const [error, setError] = useState(null);
